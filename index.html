@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101318">
+  <title>Web Proxy</title>
+  <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <main class="browser">
+    <header class="toolbar">
+      <nav class="navigation" aria-label="Browser controls">
+        <button id="back" class="icon-button" type="button" aria-label="Go back" disabled>&larr;</button>
+        <button id="forward" class="icon-button" type="button" aria-label="Go forward" disabled>&rarr;</button>
+        <button id="reload" class="icon-button" type="button" aria-label="Reload" disabled>&#8635;</button>
+      </nav>
+      <form id="address-form" class="address-form">
+        <label class="visually-hidden" for="address">Website address or search</label>
+        <input id="address" name="address" type="text" placeholder="Enter a URL or search the web" autocomplete="url" spellcheck="false" required>
+        <button type="submit">Go</button>
+      </form>
+    </header>
+    <p id="status" class="status" role="status" aria-live="polite">Enter a website address or search term to get started.</p>
+    <iframe id="page" title="Proxied website" referrerpolicy="no-referrer"></iframe>
+  </main>
+  <script src="/bootstrap-init.js"></script>
+  <script src="/index.js"></script>
+</body>
+</html>
