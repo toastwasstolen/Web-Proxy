@@ -4,16 +4,38 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101318">
-  <title>Web Proxy</title>
+  <title>My Apps</title>
+  <link rel="icon" href="https://myapps.classlink.com/favicon.ico">
   <link rel="stylesheet" href="/index.css">
 </head>
 <body>
-  <main class="browser">
+  <main id="subject-picker" class="subject-picker">
+    <h1>Choose a Subject</h1>
+    <div class="subject-options">
+      <button id="games-subject" class="subject-button" type="button">Games</button>
+      <button id="browser-subject" class="subject-button" type="button">Browser</button>
+    </div>
+  </main>
+  <main id="browser" class="browser" hidden>
+    <div class="tab-strip">
+      <button id="remove-all-tabs" class="remove-tabs" type="button" aria-label="Remove all tabs" title="Remove all tabs">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 3h8l1 2h4v2H3V5h4l1-2Zm-3 6h14l-1 12H6L5 9Zm4 2v8h2v-8H9Zm4 0v8h2v-8h-2Z"/>
+        </svg>
+      </button>
+      <div id="tabs" class="tabs" role="tablist" aria-label="Proxy tabs"></div>
+      <button id="new-tab" class="new-tab" type="button" aria-label="New tab" title="New tab">+</button>
+    </div>
     <header class="toolbar">
       <nav class="navigation" aria-label="Browser controls">
         <button id="back" class="icon-button" type="button" aria-label="Go back" disabled>&larr;</button>
         <button id="forward" class="icon-button" type="button" aria-label="Go forward" disabled>&rarr;</button>
         <button id="reload" class="icon-button" type="button" aria-label="Reload" disabled>&#8635;</button>
+        <button id="subjects-button" class="subjects-button" type="button">Games</button>
+        <div class="panic-control">
+          <button id="panic-button" class="panic-button" type="button">Panic</button>
+          <button id="panic-settings" class="panic-settings" type="button" aria-label="Choose a key bind for the Panic button" title="Choose a key bind">▾</button>
+        </div>
       </nav>
       <form id="address-form" class="address-form">
         <label class="visually-hidden" for="address">Website address or search</label>
@@ -22,8 +44,19 @@
       </form>
     </header>
     <p id="status" class="status" role="status" aria-live="polite">Enter a website address or search term to get started.</p>
-    <iframe id="page" title="Proxied website" referrerpolicy="no-referrer"></iframe>
+    <div id="pages" class="pages"></div>
   </main>
+  <dialog id="panic-dialog" class="panic-dialog" aria-labelledby="panic-dialog-title">
+    <form id="panic-key-form">
+      <h2 id="panic-dialog-title">Choose a key bind for the Panic button</h2>
+      <label for="panic-key-input">Press the key or key combination you want to use.</label>
+      <input id="panic-key-input" type="text" placeholder="Click here, then press a key" autocomplete="off" readonly>
+      <div class="panic-dialog-actions">
+        <button id="panic-key-cancel" class="dialog-secondary" type="button">Cancel</button>
+        <button id="panic-key-save" class="dialog-primary" type="submit" disabled>Save</button>
+      </div>
+    </form>
+  </dialog>
   <script src="/bootstrap-init.js"></script>
   <script src="/index.js"></script>
 </body>

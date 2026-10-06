@@ -12,7 +12,9 @@ if (!Number.isInteger(port) || port < 1 || port > 65535) {
   throw new Error("PORT must be an integer between 1 and 65535");
 }
 
-const { routeRequest, routeUpgrade } = await bootstrap();
+const { routeRequest, routeUpgrade } = await bootstrap({
+  transport: process.env.TRANSPORT ?? "epoxy",
+});
 const app = express();
 
 app.use((req, res, next) => {
